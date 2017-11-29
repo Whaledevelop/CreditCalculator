@@ -1,0 +1,22 @@
+<style>
+    .label {
+        color: yellow;
+        font-size: {{fontSize}}px
+    }
+
+</style>
+
+<label class="label">{{ label }}</label>
+<input 
+    type='range' 
+    min='20000'
+    max='3000000'
+    step='10000'
+    value='{{value}}' 
+    ng-model='value'
+/>
+<input 
+    type='text' 
+    value='{{value}}'
+    ng-model='value'
+/>
