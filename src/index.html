@@ -1,25 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="calc">
 <head>
+   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>Credit calculator</title>
 
-    <link rel="stylesheet" href='./css/style.css'/>
-    <link rel="stylesheet" href='./css/input-string.css'/>
-    
+    <link rel="shortcut icon" href="">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<!--
+    <link type="text/css" href='./css/style.css'/>
+    <link type="text/css" href='./css/input-string.css'/>   
+-->  
 
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-resource.js'></script>
 
-    <script src='./js/app/app.module.js'></script>
-    <script src='./js/app/app.config.js'></script>
-    <script src='./js/app/input-string/input-string.component.js'></script>
+    <script src='./js/app.module.js'></script>
+
+    <script src='./js/services/inputsFromJson.service.js'></script>
+    <script src='./js/services/reportsFromJson.service.js'></script>
+
+    <script src='./js/components/inputsBlock.component.js'></script>
+    <script src='./js/components/reportsBlock.component.js'></script>
     
+<!--
+    <script src='./js/input-string/input-string.component.js'></script>
+    <script src='./js/input-string/input-string.module.js'></script>
+    <script src='./js/report-block/report-block.component.js'></script>
+    <script src='./js/report-block/report-block.module.js'></script>
+-->
 </head>
 <body>
-    <input-string></input-string>
+    <div class='calcBody'>
+        <inputs-block></inputs-block>
+        <reports-block></reports-block>
+    </div>
 </body>
 </html>
