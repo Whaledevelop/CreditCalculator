@@ -2,34 +2,42 @@
 
 angular
     .module('inputsBlock', [
-        'inputsFromJson'
+        'inputsFromJson',
+        'valuesStorage'
     ])
     .component('inputsBlock', {
         templateUrl: '/templates/inputs-block.html',
         controller: inputsBlockController
     })
 
-function inputsBlockController(InputsFromJson, $scope, $rootScope) {
-    $scope.inputs = InputsFromJson.get();
-    $rootScope.inputs = $scope.inputs
-    $scope.handleRange = function(id, value) {
-        const currentInput = $scope.inputs.find(function(input) {
-            return input.id == id
+function inputsBlockController(InputsFromJson, valuesStorage, $scope) {
+    InputsFromJson.get().$promise.then(success, error);
+    function success(response) {
+        const initialValues = response.map(function(input) {
+            return input.value
         })
+        valuesStorage.setValues(initialValues)
+        $scope.inputs = response
+    }
+    function error(response) {
+        console.log (response)
+    }
+
+    $scope.handleInputs = function(id, value) {
         const inputsValues = $scope.inputs.map(function(input) {
-            return parseInt(input.value)
+            return parseInt(input.value);
         })
-        console.log (inputsValues)
-        //console.log($scope.inputs)
-    }   
-    /*
-        const regularPaymentSum = ($scope.inputes[0].value/$scope.inputes[1].value) 
-        + ($scope.inputes[0].value/100 * $scope.inputes[2].value)/12 ;
-        $scope.regularPaymentSum = regularPaymentSum
-        const returnSum = regularPaymentSum * $scope.inputes[1].value;
-        $scope.returnSum = returnSum
-        const overPayment = returnSum - $scope.inputes[0].value;
-        $scope.overPayment = overPayment
-        $scope.reports = 
-    */
+        valuesStorage.setValues(inputsValues);
+        $scope.inputs = $scope.inputs.map(function(input) {
+            if (input.id == id) {
+                if(value < input.min || value > input.max) {    
+                    input.errorMessage = `${input.label} от ${input.min} до ${input.max}`
+                } else {
+                    input.errorMessage = ' '
+                }
+            }    
+            return input
+        })
+        
+    }  
 }

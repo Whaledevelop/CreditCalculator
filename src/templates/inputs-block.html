@@ -1,5 +1,4 @@
 <div id='inputsColumn'>
-    {{abc}}
     <h2>Кредитный калькулятор</h2>
     <div class='inputsGroup' ng-repeat="input in inputs">
         <div class='labelColumn'>
@@ -9,9 +8,10 @@
             <input 
                 type='range' 
                 min='{{ input.min }}'
-                max='{{ input.max }}'   
+                max='{{ input.max }}'
+                step='{{ input.step }}'
                 ng-model='input.value'
-                ng-change='handleRange(input.id, input.value)'
+                ng-change='handleInputs(input.id, input.value)'
             />
         </div>
         <div>
@@ -19,7 +19,9 @@
                 class='valueInput'
                 type='text'
                 ng-model='input.value'
+                ng-change='handleInputs(input.id, input.value)'
             />
         </div>
+        <div>{{input.errorMessage}}</div>
     </div>        
 </div>   
