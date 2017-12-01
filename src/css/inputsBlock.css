@@ -1,26 +1,19 @@
-.calcBody {
+#calcBody {
     margin: 50px;
     background-color: #fff;
     border: 25px solid #eae8ea;
     display: flex;
 }
 
-#inputsColumn {
+#inputsBlock {
     width: 70%;
     margin: 0px;
-    color: #686668;
+    color: #757375;
     padding: 20px;
 }
 
 .inputsGroup {
     display: flex;
-}
-
-#reportColumn {
-    background-color: #17b558;
-    width: 30%;
-    color: #fff;
-    padding: 30px;
 }
 
 .labelColumn {
@@ -34,6 +27,7 @@
 .valueInput {
     width: 46%;
     height: 45px;
+    color: #757375;
 } 
 
 input[type=range] {

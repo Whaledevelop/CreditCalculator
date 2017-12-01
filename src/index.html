@@ -8,13 +8,14 @@
 
     <title>Credit calculator</title>
 
-    <link rel="shortcut icon" href="">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-<!--
-    <link type="text/css" href='./css/style.css'/>
-    <link type="text/css" href='./css/input-string.css'/>   
--->  
+    <link rel="shortcut icon" href=""/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto"/>
 
+    <link rel="stylesheet" type="text/css" href='./css/style.css'/> 
+    <link rel="stylesheet" type="text/css" href='./css/inputsBlock.css'/>
+    <link rel="stylesheet" type="text/css" href='./css/reportsBlock.css'/>  
+     
+ 
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-resource.js'></script>
 
@@ -27,17 +28,11 @@
     <script src='./js/services/reportsFromJson.service.js'></script>
     <script src='./js/services/valuesStorage.service.js'></script>
     
-<!--
-    <script src='./js/input-string/input-string.component.js'></script>
-    <script src='./js/input-string/input-string.module.js'></script>
-    <script src='./js/report-block/report-block.component.js'></script>
-    <script src='./js/report-block/report-block.module.js'></script>
--->
 </head>
 <body>
-    <div class='calcBody'>
-        <inputs-block></inputs-block>
-        <reports-block></reports-block>
+    <div id='calcBody'>
+        <inputs-block id='inputsBlock'></inputs-block>
+        <reports-block id='reportsBlock'></reports-block>
     </div>
 </body>
 </html>

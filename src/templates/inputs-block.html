@@ -1,4 +1,4 @@
-<div id='inputsColumn'>
+<div>
     <h2>Кредитный калькулятор</h2>
     <div class='inputsGroup' ng-repeat="input in inputs">
         <div class='labelColumn'>
@@ -21,6 +21,7 @@
                 ng-model='input.value'
                 ng-change='handleInputs(input.id, input.value)'
             />
+            <span>{{ input.unit }}</span>
         </div>
         <div>{{input.errorMessage}}</div>
     </div>        

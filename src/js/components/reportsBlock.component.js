@@ -14,6 +14,7 @@ function reportsBlockController(ReportsFromJson, valuesStorage, $scope) {
     setInterval(function() {
         ReportsFromJson.get().$promise.then(success, error)
     }, 100);
+
     function success(response) {
         const reportsValues = reportsValuesFactory(valuesStorage.getValues());
         const reports = response.map(function(report) {
@@ -22,11 +23,18 @@ function reportsBlockController(ReportsFromJson, valuesStorage, $scope) {
         })  
         $scope.reports = reports
     }
+    
     function error(response) {
         console.log ('error' + response)
     }
+
     function reportsValuesFactory(inputsValues) {
-        const creditSum = inputsValues[0]
+        let creditSum = inputsValues[0]
+        if (creditSum < 20000) {
+            creditSum = 20000
+        } else if (creditSum > 3000000) {
+            creditSum = 3000000
+        }
         const creditPeriod = inputsValues[1]
         const percentageRate = inputsValues[2]
         const regularPaymentSum = (creditSum * percentageRate / 12 / 100) / 
@@ -42,6 +50,7 @@ function reportsBlockController(ReportsFromJson, valuesStorage, $scope) {
             regularPaymentSum
         ]
     }
+
     function moneyViewFactory(value) {
         let valueObj = (Math.round(value) + '').split('');   
         const rest = valueObj.length % 3;

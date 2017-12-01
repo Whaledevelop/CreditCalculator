@@ -12,6 +12,7 @@ angular
 
 function inputsBlockController(InputsFromJson, valuesStorage, $scope) {
     InputsFromJson.get().$promise.then(success, error);
+
     function success(response) {
         const initialValues = response.map(function(input) {
             return input.value
@@ -19,6 +20,7 @@ function inputsBlockController(InputsFromJson, valuesStorage, $scope) {
         valuesStorage.setValues(initialValues)
         $scope.inputs = response
     }
+
     function error(response) {
         console.log (response)
     }
@@ -37,7 +39,6 @@ function inputsBlockController(InputsFromJson, valuesStorage, $scope) {
                 }
             }    
             return input
-        })
-        
+        })       
     }  
 }
