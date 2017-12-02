@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 angular
     .module('reportsBlock', [
@@ -12,10 +12,12 @@ angular
 
 function reportsBlockController(ReportsFromJson, valuesStorage, $scope) {
     setInterval(function() {
-        ReportsFromJson.get().$promise.then(success, error)
-    }, 100);
+        ReportsFromJson.get().$promise.then(
+            successInGettingReports, errorInGettingReports
+        )
+    }, 100)
 
-    function success(response) {
+    function successInGettingReports(response, ) {
         const reportsValues = reportsValuesFactory(valuesStorage.getValues());
         const reports = response.map(function(report) {
             report.value = moneyViewFactory(reportsValues[report.id - 1])
@@ -24,8 +26,8 @@ function reportsBlockController(ReportsFromJson, valuesStorage, $scope) {
         $scope.reports = reports
     }
     
-    function error(response) {
-        console.log ('error' + response)
+    function errorInGettingReports(response, status) {
+        console.log ('error ' + status + response)
     }
 
     function reportsValuesFactory(inputsValues) {

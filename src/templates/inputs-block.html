@@ -1,28 +1,34 @@
 <div>
-    <h2>Кредитный калькулятор</h2>
-    <div class='inputsGroup' ng-repeat="input in inputs">
-        <div class='labelColumn'>
-            <span>{{ input.label }}</span>
+    <h2 id='creditCalcHeader'>Кредитный калькулятор</h2>
+    <div ng-repeat="input in inputs">
+        <div class='minMaxSring'>
+            <span>{{ input.min }}</span>
+            <span>{{ input.max }}</span>
+        </div>
+        <div class='inputsGroup'>
+            <div class='labelColumn'>
+                <span>{{ input.label }}: </span>
+            </div>   
+            <div class='rangeColumn'>
+                <input 
+                    type='range' 
+                    min='{{ input.min }}'
+                    max='{{ input.max }}'
+                    step='{{ input.step }}'
+                    ng-model='input.value'
+                    ng-change='handleInputs(input.id, input.value)'
+                />
+            </div>
+            <div>
+                <input 
+                    class='valueInput'
+                    type='text'
+                    ng-model='input.value'
+                    ng-change='handleInputs(input.id, input.value)'
+                />
+                <span>{{ input.unit }}</span>
+            </div>
+            <div>{{input.errorMessage}}</div>
         </div>   
-        <div class='rangeColumn'>
-            <input 
-                type='range' 
-                min='{{ input.min }}'
-                max='{{ input.max }}'
-                step='{{ input.step }}'
-                ng-model='input.value'
-                ng-change='handleInputs(input.id, input.value)'
-            />
-        </div>
-        <div>
-            <input 
-                class='valueInput'
-                type='text'
-                ng-model='input.value'
-                ng-change='handleInputs(input.id, input.value)'
-            />
-            <span>{{ input.unit }}</span>
-        </div>
-        <div>{{input.errorMessage}}</div>
     </div>        
 </div>   

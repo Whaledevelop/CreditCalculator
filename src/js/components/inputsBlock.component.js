@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 angular
     .module('inputsBlock', [
@@ -11,9 +11,11 @@ angular
     })
 
 function inputsBlockController(InputsFromJson, valuesStorage, $scope) {
-    InputsFromJson.get().$promise.then(success, error);
+    InputsFromJson.get().$promise.then(
+        successInGettingInputs, errorInGettingInputs
+    )
 
-    function success(response) {
+    function successInGettingInputs(response) {
         const initialValues = response.map(function(input) {
             return input.value
         })
@@ -21,8 +23,8 @@ function inputsBlockController(InputsFromJson, valuesStorage, $scope) {
         $scope.inputs = response
     }
 
-    function error(response) {
-        console.log (response)
+    function errorInGettingInputs(response) {
+        console.log ('error' + response)
     }
 
     $scope.handleInputs = function(id, value) {

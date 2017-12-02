@@ -1,8 +1,12 @@
 #calcBody {
-    margin: 50px;
+    margin: 15px;
     background-color: #fff;
     border: 25px solid #eae8ea;
     display: flex;
+}
+
+#creditCalcHeader {
+    margin-bottom: 20px
 }
 
 #inputsBlock {
@@ -26,7 +30,7 @@
 
 .valueInput {
     width: 46%;
-    height: 45px;
+    height: 30px;
     color: #757375;
 } 
 
