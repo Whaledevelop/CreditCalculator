@@ -1,17 +1,13 @@
 'use strict'
 
-angular
-    .module('inputsBlock', [
-        'inputsFromJson',
-        'valuesStorage'
-    ])
+angular.module('inputsBlock')
     .component('inputsBlock', {
         templateUrl: '/templates/inputs-block.html',
         controller: inputsBlockController
     })
 
-function inputsBlockController(InputsFromJson, valuesStorage, $scope) {
-    InputsFromJson.get().$promise.then(
+function inputsBlockController(inputsFromJson, valuesStorage, $scope) {
+    inputsFromJson.get().$promise.then(
         successInGettingInputs, errorInGettingInputs
     )
 

@@ -1,8 +1,7 @@
 'use strict'
 
-angular
-    .module('inputsFromJson', [])
-    .factory('InputsFromJson', inputsFactory)
+angular.module('inputsFromJson')
+    .factory('inputsFromJson', inputsFactory)
 
 function inputsFactory($resource) {
     const url = '/json/inputs.json'

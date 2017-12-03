@@ -15,19 +15,27 @@
     <link rel="stylesheet" type="text/css" href='./css/inputsBlock.css'/>
     <link rel="stylesheet" type="text/css" href='./css/reportsBlock.css'/>  
      
- 
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-resource.js'></script>
 
     <script src='./js/app.module.js'></script>
 
-    <script src='./js/components/inputsBlock.component.js'></script>
-    <script src='./js/components/reportsBlock.component.js'></script>
-
-    <script src='./js/services/inputsFromJson.service.js'></script>
-    <script src='./js/services/reportsFromJson.service.js'></script>
-    <script src='./js/services/valuesStorage.service.js'></script>
+    <script src='./js/app/inputsBlock/inputsBlock.module.js'></script>
+    <script src='./js/app/inputsBlock/inputsBlock.component.js'></script>
     
+    <script src='./js/app/reportsBlock/reportsBlock.module.js'></script>
+    <script src='./js/app/reportsBlock/reportsBlock.component.js'></script>
+    
+    <script src='./js/services/inputsFromJson/inputsFromJson.module.js'></script>
+    <script src='./js/services/inputsFromJson/inputsFromJson.service.js'></script>
+    
+    <script src='./js/services/reportsFromJson/reportsFromJson.module.js'></script>
+    <script src='./js/services/reportsFromJson/reportsFromJson.service.js'></script>
+    
+    <script src='./js/services/valuesStorage/valuesStorage.module.js'></script>
+    <script src='./js/services/valuesStorage/valuesStorage.service.js'></script>
+      
 </head>
 <body>
     <div id='calcBody'>

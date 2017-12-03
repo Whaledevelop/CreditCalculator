@@ -1,8 +1,7 @@
 'use strict'
 
-angular
-    .module('reportsFromJson', [])
-    .factory('ReportsFromJson', reportsFactory)
+angular.module('reportsFromJson')
+    .factory('reportsFromJson', reportsFactory)
 
 function reportsFactory($resource) {
     const url = '/json/reports.json'
