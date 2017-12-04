@@ -6,16 +6,18 @@
         "max": 3000000, 
         "step": 10000,
         "value": 20000,
-        "unit": "рублей"
+        "unit": "рублей",
+        "container": "creditSumContainer"
     },
     {
         "id": 2, 
-        "label": "Срок sdasdsadsкредитования", 
+        "label": "Срок кредитования", 
         "min": 1, 
         "max": 60, 
         "step": 1,
         "value": 12,
-        "unit": "месяцев"
+        "unit": "месяцев",
+        "container": "creditPeriod"
     },
     {
         "id": 3, 
@@ -24,6 +26,7 @@
         "max": 30, 
         "step": 1,
         "value": 15,
-        "unit": "% годовых"
+        "unit": "% годовых",
+        "container": "percentageRate"
     }
 ]

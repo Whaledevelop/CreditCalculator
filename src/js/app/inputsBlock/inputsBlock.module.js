@@ -2,5 +2,6 @@
 
 angular.module('inputsBlock', [
     'inputsFromJson',
+    'rangeInput',
     'valuesStorage' 
 ])

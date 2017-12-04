@@ -20,7 +20,7 @@ function inputsBlockController(inputsFromJson, valuesStorage, $scope) {
     }
 
     function errorInGettingInputs(response) {
-        console.log ('error' + response)
+        console.log ('error in getting inputs ' + response)
     }
 
     $scope.handleInputs = function(id, value) {

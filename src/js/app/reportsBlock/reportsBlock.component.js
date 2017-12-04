@@ -23,7 +23,7 @@ function reportsBlockController(reportsFromJson, valuesStorage, $scope) {
     }
     
     function errorInGettingReports(response) {
-        console.log ('error ' + status + response)
+        console.log ('error in getting reports ' + response)
     }
 
     function moneyViewFactory(value) {

@@ -34,30 +34,4 @@
     color: #757375;
 } 
 
-input[type=range] {
-	-webkit-appearance: none;
-    width: 80%;
-    margin: 0 auto;
-}
 
-input[type=range]:focus {
-	outline: none;
-}
-
-input[type=range]::-webkit-slider-runnable-track {
-	height: 5px;
-	cursor: pointer;
-    background: #ff7217;
-    border-radius: 5px;
-}
-
-input[type=range]::-webkit-slider-thumb {
-	border: 4px solid #ff7217;
-	height: 19px;
-	width: 19px;
-	border-radius: 100%;
-	background: #ffffff;
-	cursor: pointer;
-	-webkit-appearance: none;
-    margin-top: -6px;
-}
