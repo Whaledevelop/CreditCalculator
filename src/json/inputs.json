@@ -17,7 +17,7 @@
         "step": 1,
         "value": 12,
         "unit": "месяцев",
-        "container": "creditPeriod"
+        "container": "creditPeriodContainer"
     },
     {
         "id": 3, 
@@ -27,6 +27,6 @@
         "step": 1,
         "value": 15,
         "unit": "% годовых",
-        "container": "percentageRate"
+        "container": "percentageRateContainer"
     }
 ]

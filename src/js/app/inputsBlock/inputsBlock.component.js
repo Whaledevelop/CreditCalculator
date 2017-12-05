@@ -1,10 +1,8 @@
 'use strict'
 
 angular.module('inputsBlock')
-    .component('inputsBlock', {
-        templateUrl: '/templates/inputs-block.html',
-        controller: inputsBlockController
-    })
+    .controller('InputsBlock', inputsBlockController)
+    .directive()
 
 function inputsBlockController(inputsFromJson, valuesStorage, $scope) {
     inputsFromJson.get().$promise.then(

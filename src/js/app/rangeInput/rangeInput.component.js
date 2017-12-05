@@ -2,12 +2,14 @@
 
 angular.module('rangeInput')
     .component('rangeInput', {
-        templateUrl: '/templates/range-input.html',
+        template: '<h1>{{input.container}}</h1>',
         controller: rangeInputController
     })
 
 function rangeInputController($scope) {
-    $scope.input = $scope.$parent.input;
+    $scope.input = $scope.$parent.input
+    console.log ($scope.input)
+    $scope.container = 'hello'
     const stage = new Konva.Stage({
         container: $scope.input.container,
         width: 500,

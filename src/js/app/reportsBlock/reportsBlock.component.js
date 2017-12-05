@@ -7,11 +7,9 @@ angular.module('reportsBlock')
     })
 
 function reportsBlockController(reportsFromJson, valuesStorage, $scope) {
-    setInterval(function() {
-        reportsFromJson.get().$promise.then(
-            successInGettingReports, errorInGettingReports
-        )
-    }, 100)
+    reportsFromJson.get().$promise.then(
+        successInGettingReports, errorInGettingReports
+    )
 
     function successInGettingReports(response) {
         const reportsValues = valuesStorage.getValues();
