@@ -1,14 +1,40 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html lang="en" ng-app = "creditCalcApp">
   <head>
     <meta charset="utf-8">
-    <title>My HTML File</title>
+
+    <title>Credit Calculator</title>
+
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" />
+    <link rel="stylesheet" href="app.css" />
+
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+
+    <script src="app.module.js"></script>
+    <script src="app.config.js"></script>
+
+    <script src="calc-body/calc-body.module.js"></script>
+    <script src="calc-body/calc-body.component.js"></script>
+
+    <script src="core/core.module.js"></script>
+    <script src="core/inputs/inputs.module.js"></script>
+    <script src="core/inputs/inputs.service.js"></script>
+    <script src="core/reports/reports.module.js"></script>
+    <script src="core/reports/reports.service.js"></script>   
+
+    <script src="input-block/input-block.module.js"></script>
+    <script src="input-block/input-block.component.js"></script>
+
+    <script src="report-block/report-block.module.js"></script>
+    <script src="report-block/report-block.component.js"></script>
+
   </head>
   <body>
 
-    <p>Nothing here {{'yet' + '!'}}</p>
+    <div ng-view></div>
 
   </body>
 </html>

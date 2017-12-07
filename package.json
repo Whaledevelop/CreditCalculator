@@ -1,10 +1,6 @@
 {
-    "name": "angular-phonecat",
-    "private": true,
-    "version": "0.0.0",
-    "description": "A tutorial application for AngularJS",
-    "repository": "https://github.com/angular/angular-phonecat",
-    "license": "MIT",
+    "name": "credit_calculator",
+    "description": "Test rask for aspect-systems",
     "devDependencies": {
         "bower": "^1.7.7",
         "http-server": "^0.9.0",
@@ -27,5 +23,8 @@
         "preprotractor": "npm run update-webdriver",
         "protractor": "protractor e2e-tests/protractor.conf.js",
         "update-index-async": "node -e \"var fs=require('fs'),indexFile='app/index-async.html',loaderFile='app/bower_components/angular-loader/angular-loader.min.js',loaderText=fs.readFileSync(loaderFile,'utf-8').split(/sourceMappingURL=angular-loader.min.js.map/).join('sourceMappingURL=bower_components/angular-loader/angular-loader.min.js.map'),indexText=fs.readFileSync(indexFile,'utf-8').split(/\\/\\/@@NG_LOADER_START@@[\\s\\S]*\\/\\/@@NG_LOADER_END@@/).join('//@@NG_LOADER_START@@\\n'+loaderText+'    //@@NG_LOADER_END@@');fs.writeFileSync(indexFile,indexText);\""
+    },
+    "dependencies": {
+        "lodash": "^4.17.4"
     }
 }

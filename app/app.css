@@ -1,0 +1,69 @@
+html, body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+ }
+
+h1,h2,h3,h4,h5,h6 {
+    padding: 0px;
+    margin: 0px;
+    font-weight: 300;
+}
+
+.calcBody {
+    margin: 15px;
+    background-color: #fff;
+    border: 25px solid #eae8ea;
+    display: flex;
+}
+
+/* inputs block */
+
+.inputPanel {
+    width: 70%;
+    margin: 0px;
+    color: #757375;
+    padding: 20px;
+}
+
+.creditCalcHeader {
+    margin-bottom: 20px
+}
+
+.inputGroup {
+    display: flex;
+}
+
+.labelColumn {
+    width: 21%;
+}
+
+.rangeInputColumn {
+    width: 54%;
+}
+
+.textInputColumn {
+    width: 25%
+}
+
+.valueInput {
+    width: 46%;
+    height: 30px;
+    color: #757375;
+} 
+
+/* reports block */
+
+.reportBlock {
+    background-color: #17b558;
+    width: 30%;
+    color: #fdfffe;
+    padding-left: 30px;
+    padding-top: 20px;
+}
+
+

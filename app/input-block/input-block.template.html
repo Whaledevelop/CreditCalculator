@@ -1,0 +1,16 @@
+<div class = "inputGroup">
+    <div class = 'labelColumn'>
+        <span>{{ $ctrl.input.label }}: </span>
+    </div> 
+    <div class = "rangeInputColumn">
+        {{ $ctrl.input.value }}
+    </div>
+    <div class = "textInputColumn">
+        <input
+            class='valueInput'
+            type='text'
+            ng-model='$ctrl.input.value'
+            ng-change='$ctrl.handleChange()'  
+        />
+    </div>
+</div>
