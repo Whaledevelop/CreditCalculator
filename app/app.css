@@ -21,8 +21,6 @@ h1,h2,h3,h4,h5,h6 {
     display: flex;
 }
 
-/* inputs block */
-
 .inputPanel {
     width: 70%;
     margin: 0px;
@@ -30,7 +28,7 @@ h1,h2,h3,h4,h5,h6 {
     padding: 20px;
 }
 
-.creditCalcHeader {
+.blockHeader {
     margin-bottom: 20px
 }
 
@@ -56,8 +54,6 @@ h1,h2,h3,h4,h5,h6 {
     color: #757375;
 } 
 
-/* reports block */
-
 .reportBlock {
     background-color: #17b558;
     width: 30%;
@@ -66,4 +62,17 @@ h1,h2,h3,h4,h5,h6 {
     padding-top: 20px;
 }
 
+.reportString {
+    display: flex;
+    margin-bottom: 15px
+}
+
+.reportColumn {
+    width: 50%;
+    line-height: 20px
+}
+
+.reportNumber {
+    font-size: 19px;
+}
 

@@ -1,1 +1,5 @@
-angular.module('inputBlock', [])
+angular.module('inputBlock', [
+    'core.moneyView',
+    'core.unitHandler',
+    'rangeInput'
+])

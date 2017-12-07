@@ -8,13 +8,32 @@ angular
             input: '<',
             onChange: '&'
         },
-        controller: InputBlockController
+        controller: ['moneyView', 'unitHandler', InputBlockController]
     })
 
-function InputBlockController() {
-    this.handleChange = function() {
-        this.onChange({
-            value: this.input.value
+function InputBlockController(moneyView, unitHandler) {
+    let self = this
+
+    self.moneyView = function(value) {
+        return moneyView.setView(value)
+    }
+
+    self.unitHandler = function(value, unit) {
+        let inputUnit = unitHandler.setUnit(value, unit)
+        if (inputUnit === 'руб.') {
+            inputUnit = 'рублей'
+        }
+        return inputUnit
+    }
+
+    self.handleChange = function(value) {
+        if (value < self.input.min) {
+            value = self.input.min     
+        } else if (value > self.input.max) {
+            value = self.input.max
+        }
+        self.onChange({
+            value: value
         })
     }
 }

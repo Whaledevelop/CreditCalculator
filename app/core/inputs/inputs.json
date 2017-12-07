@@ -5,8 +5,8 @@
         "min": 20000, 
         "max": 3000000, 
         "step": 10000,
-        "value": 20000,
-        "unit": "рублей",
+        "value": 1500000,
+        "unit": "руб.",
         "container": "creditSumContainer"
     },
     {
@@ -16,7 +16,7 @@
         "max": 60, 
         "step": 1,
         "value": 12,
-        "unit": "месяцев",
+        "unit": "мес.",
         "container": "creditPeriodContainer"
     },
     {

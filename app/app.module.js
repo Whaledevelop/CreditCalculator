@@ -4,8 +4,8 @@ angular.module('creditCalcApp', [
     'ngRoute',
     'ngResource',
     'calcBody',
-    'core.inputs',
-    'core.reports',
+    'core',
     'inputBlock',
-    'reportBlock'
+    'reportBlock',
+    'rangeInput'
 ])

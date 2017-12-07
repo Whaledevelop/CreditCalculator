@@ -7,9 +7,17 @@ angular
         bindings: {
             report: '<'
         },
-        controller: ReportBlockController
+        controller: ['moneyView', 'unitHandler', ReportBlockController]
     })
 
-function ReportBlockController() {
-    
+function ReportBlockController(moneyView, unitHandler) {
+    let self = this
+
+    self.moneyView = function(value) {
+        return moneyView.setView(value)
+    }
+
+    self.unitHandler = function(value, unit) {
+        return unitHandler.setUnit(value, unit)
+    }   
 }

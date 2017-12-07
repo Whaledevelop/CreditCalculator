@@ -8,7 +8,6 @@ angular.module('rangeInput')
 
 function rangeInputController($scope) {
     $scope.input = $scope.$parent.input
-    console.log ($scope.input)
     $scope.container = 'hello'
     const stage = new Konva.Stage({
         container: $scope.input.container,
