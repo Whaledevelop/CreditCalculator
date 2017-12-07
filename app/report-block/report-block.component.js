@@ -13,6 +13,12 @@ angular
 function ReportBlockController(moneyView, unitHandler) {
     let self = this
 
+    self.$onInit = function() {
+    }
+
+    self.$onChanges = function() {
+    }
+
     self.moneyView = function(value) {
         return moneyView.setView(value)
     }

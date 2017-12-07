@@ -1,8 +1,8 @@
 'use strict'
 
 angular
-    .module('sliderBlock')
-    .component('sliderBlock', {
+    .module('konvaStage')
+    .component('konvaStage', {
         templateUrl: 'konva-stage/konva-stage.template.html',
         bindings: {
             inputs: '<',
@@ -14,8 +14,15 @@ angular
 function KonvaStageController() {
     let self = this
     self.stage = new Konva.Stage ({
-        container: 'container',
+        container: 'konvaStage',
         width: 500,
-        height: 350
+        height: 400
     })
+
+    self.updateValues = function (input, value) {
+        self.onChange({
+            input: input,
+            value: value
+        })
+    }
 }

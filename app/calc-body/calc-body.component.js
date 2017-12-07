@@ -4,6 +4,11 @@ angular
     .module('calcBody')
     .component('calcBody', {
         templateUrl: 'calc-body/calc-body.template.html',
+        bindings: {
+            inputs: '<',
+            reports: '<',
+            updateValues: '&'
+        },
         controller: [
             'Inputs', 'Reports', 'reportsValues', 
             CalcBodyController
