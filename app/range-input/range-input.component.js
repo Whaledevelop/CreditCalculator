@@ -3,20 +3,16 @@
 angular
     .module('rangeInput')
     .component('rangeInput', {
-        templateUrl: 'range-input/range-input.template.html',
         bindings: {
             input: '<',
+            stage: '<',
             onChange: '&'
         },
         controller: RangeInputController
     })
 
 function RangeInputController() {
-    let self = this;
-
-    self.handleChange = function() {
-        self.onChange({
-            value: self.input.value
-        })
-    }
+    let self = this
+    console.log (self.input)
+    console.log (self.stage)
 }

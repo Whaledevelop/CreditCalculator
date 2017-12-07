@@ -1,10 +1,23 @@
 <div class = "calcBody">
     <div class = "inputPanel">
         <h3 class = "blockHeader">Кредитный калькулятор</h3>
+        <div class="inputGroup">
+            <div 
+                class = "labelColumn"
+                ng-repeat = "input in $ctrl.inputs"
+            >
+                {{ input.label }}:
+            </div>
+            <konva-stage
+                inputs = "$ctrl.inputs"
+                on-change = "$ctrl.updateValues(input, value)"
+            >    
+            </konva-stage>
+        </div>
         <input-block
             ng-repeat = "input in $ctrl.inputs"
             input = "input"
-            on-change = "$ctrl.updateInputValue(input, value)"
+            on-change = "$ctrl.updateValues(input, value)"
         >
         </input-block>
     </div>

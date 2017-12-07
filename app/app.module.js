@@ -3,9 +3,10 @@
 angular.module('creditCalcApp', [
     'ngRoute',
     'ngResource',
-    'calcBody',
     'core',
+    'calcBody',
+    'konvaStage',
+    'rangeInput',
     'inputBlock',
-    'reportBlock',
-    'rangeInput'
+    'reportBlock'
 ])

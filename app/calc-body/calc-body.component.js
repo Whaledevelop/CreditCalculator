@@ -18,7 +18,7 @@ function CalcBodyController(Inputs, Reports, reportsValues) {
         setReportValues()
     })
 
-    self.updateInputValue = function(input, value) {
+    self.updateValues = function(input, value) {
         input.value = value
         self.reports = setReportValues()
     } 
@@ -32,5 +32,5 @@ function CalcBodyController(Inputs, Reports, reportsValues) {
             return report
         })
         return reports
-    }
+    }   
 }

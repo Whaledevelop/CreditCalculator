@@ -1,24 +1,14 @@
 <div class = "inputGroup">
-    <div class = 'labelColumn'>
-        <span>{{ $ctrl.input.label }}: </span>
-    </div> 
-    <div class = "rangeInputColumn">
-        {{ $ctrl.moneyView($ctrl.input.value) }}
-        <range-input
-            input = '$ctrl.input'
-            on-change='$ctrl.handleChange(value)'  
-        ></range-input>
-    </div>
     <div class = "textInputColumn">
-        <input
-            class='valueInput'
-            type='text'
-            ng-model='$ctrl.input.value'
-            ng-change='$ctrl.handleChange()'  
-        />
-        {{ $ctrl.unitHandler(
-            $ctrl.input.value,
-            $ctrl.input.unit
-        ) }}
-    </div>
+    <input
+        class='valueInput'
+        type='text'
+        ng-model='$ctrl.input.value'
+        ng-change='$ctrl.handleChange()'  
+    />
+    {{ $ctrl.unitHandler(
+        $ctrl.input.value,
+        $ctrl.input.unit
+    ) }}
+</div>
 </div>
