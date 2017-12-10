@@ -1,25 +1,23 @@
 <div class = "calcBody">
     <div class = "inputPanel">
         <h3 class = "blockHeader">Кредитный калькулятор</h3>
-        <div class="inputGroup">
-            <div 
-                class = "labelColumn"
-                ng-repeat = "input in $ctrl.inputs"
-            >
-                {{ input.label }}:
-            </div>
-            <konva-stage
-                inputs = "$ctrl.inputs"
-                on-change = "$ctrl.updateValues(input, value)"
-            >    
-            </konva-stage>
+
+        <div class = "inputGroup">
+            <div class = "labelColumn">
+                <div ng-repeat = "input in $ctrl.inputs">{{ input.label }} :</div>
+            </div> 
+            <div id = "konvaStage"></div>
+            <div class = "textInputColumn">
+                <input-block
+                    ng-repeat= "input in $ctrl.inputs"
+                    input = "input"
+                    stage = "$ctrl.stage"
+                    on-change = "$ctrl.updateValues(input, value)"
+                >
+                </input-block>
+            </div>    
         </div>
-        <input-block
-            ng-repeat = "input in $ctrl.inputs"
-            input = "input"
-            on-change = "$ctrl.updateValues(input, value)"
-        >
-        </input-block>
+            
     </div>
     <div class = "reportBlock">
         <h3 class = "blockHeader">Результат</h3>
@@ -30,3 +28,25 @@
         </report-block>
     </div>
 </div>
+
+            <!-- 
+                    <div 
+                        class = "labelColumn"
+                        ng-repeat = "input in $ctrl.inputs"
+                        >
+                        {{ input.label }}:
+                    </div>
+                    <konva-stage
+                        inputs = "$ctrl.inputs"
+                        on-change = "$ctrl.updateValues(input, value)"
+                    >    
+                    </konva-stage>
+                </div>
+                <input-block
+                    ng-repeat = "input in $ctrl.inputs"
+                    input = "input"
+                    on-change = "$ctrl.updateValues(input, value)"
+                >
+                </input-block>
+
+            -->

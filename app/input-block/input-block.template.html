@@ -1,15 +1,11 @@
-<div class = "inputGroup">
-    <div class = "textInputColumn">
-        <input
-            id = '$ctrl.input.inputId'
-            class='valueInput'
-            type='number'
-            ng-model='$ctrl.input.value'
-            ng-change='$ctrl.handleChange()'  
-        />
-        {{ $ctrl.unitHandler(
-            $ctrl.input.value,
-            $ctrl.input.unit
-        ) }}
-    </div>
-</div>
+    <input
+        id = '{{$ctrl.input.inputId}}'
+        class='valueInput'
+        type='number'
+        ng-model='$ctrl.input.value'
+        ng-change='$ctrl.handleChange()'  
+    />
+    {{ $ctrl.unitHandler(
+        $ctrl.input.value,
+        $ctrl.input.unit
+    ) }}
