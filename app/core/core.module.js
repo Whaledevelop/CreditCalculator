@@ -3,5 +3,6 @@ angular.module('core', [
     'core.reports',
     'core.reportsValues',
     'core.moneyView',
-    'core.unitHandler'
+    'core.unitHandler',
+    'core.valueStorage'
 ]);

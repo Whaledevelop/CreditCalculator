@@ -6,6 +6,7 @@ angular
         templateUrl: 'konva-stage/konva-stage.template.html',
         bindings: {
             inputs: '<',
+            stage: '<',
             onChange: '&'
         },
         controller: KonvaStageController
@@ -13,6 +14,7 @@ angular
 
 function KonvaStageController() {
     let self = this
+
     self.stage = new Konva.Stage ({
         container: 'konvaStage',
         width: 500,

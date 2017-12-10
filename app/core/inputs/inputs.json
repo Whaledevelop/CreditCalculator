@@ -7,7 +7,7 @@
         "step": 10000,
         "value": 1500000,
         "unit": "руб.",
-        "container": "creditSumContainer"
+        "inputId": "creditSum"
     },
     {
         "id": 2, 
@@ -17,7 +17,7 @@
         "step": 1,
         "value": 12,
         "unit": "мес.",
-        "container": "creditPeriodContainer"
+        "inputId": "creditPeriod"
     },
     {
         "id": 3, 
@@ -27,6 +27,6 @@
         "step": 1,
         "value": 15,
         "unit": "% годовых",
-        "container": "percentageRateContainer"
+        "inputId": "percentageRate"
     }
 ]

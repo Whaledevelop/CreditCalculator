@@ -3,6 +3,7 @@
 angular
     .module('rangeInput')
     .component('rangeInput', {
+        templateUrl: 'range-input/range-input.template.html',
         bindings: {
             input: '<',
             stage: '<',
@@ -21,9 +22,8 @@ function RangeInputController() {
         stageHeight = self.stage.attrs.height,
         layerLeftX = 50,
         layerRightX = stageWidth - 50,
-        {value, max, min} = self.input,
         sliderX = (
-            Math.round((value / ((max - min)/(layerRightX - layerLeftX))) + layerLeftX)
+            Math.round((self.input.value / ((self.input.max - self.input.min)/(layerRightX - layerLeftX))) + layerLeftX)
         ),
         sliderY = 50 + 100 * self.input.id 
     
@@ -36,9 +36,9 @@ function RangeInputController() {
         strokeWidth: 2,
         draggable: true,
         dragBoundFunc: function(pos) {
-            if (pos.x < layerLeftX) {
+            if (pos.x <= layerLeftX) {
                 pos.x = layerLeftX
-            } else if (pos.x > layerRightX) {
+            } else if (pos.x >= layerRightX) {
                 pos.x = layerRightX
             }
             return {
@@ -46,12 +46,12 @@ function RangeInputController() {
                 y: this.getAbsolutePosition().y
             }
         }
-    });
+    })
 
     const sliderCounter = new Konva.Text({
         x: sliderX,
         y: sliderY + 20,
-        text: value,
+        text: self.input.value,
         fontSize: 18,
         fontFamily: 'Calibri',
         fill: 'green'
@@ -60,7 +60,7 @@ function RangeInputController() {
     const minText = new Konva.Text({
         x: layerLeftX,
         y: sliderY - 20,
-        text: min,
+        text: self.input.min,
         fontSize: 18,
         fontFamily: 'Calibri',
         fill: 'green'
@@ -69,7 +69,7 @@ function RangeInputController() {
     const maxText = new Konva.Text({
         x: layerRightX,
         y: sliderY - 20,
-        text: max,
+        text: self.input.max,
         fontSize: 18,
         fontFamily: 'Calibri',
         fill: 'green'
@@ -99,7 +99,7 @@ function RangeInputController() {
         strokeWidth: 5,
         lineCap: 'round',
         lineJoin: 'round'
-    })   
+    })  
 
     layer.add(greyLine)
     layer.add(orangeLine)
@@ -112,9 +112,9 @@ function RangeInputController() {
     
     function drawRangeInput() {
         let newSliderX = self.stage.getPointerPosition().x;
-        if (newSliderX < layerLeftX) {
+        if (newSliderX <= layerLeftX) {
             newSliderX = layerLeftX           
-        } else if (newSliderX > layerRightX) {
+        } else if (newSliderX >= layerRightX) {
             newSliderX = layerRightX
         } else {
             circleSlider.move({
@@ -127,19 +127,25 @@ function RangeInputController() {
         let value = Math.round(
             ((newSliderX - layerLeftX) / (layerRightX - layerLeftX)) * (self.input.max - self.input.min)
         )
-        sliderCounter.attrs.text = 'hello'
-        orangeLine.attrs.points = [
-            layerLeftX, 
-            sliderY, 
-            newSliderX, 
-            sliderY
-        ]
-        greyLine.attrs.points = [
-            layerRightX, 
-            sliderY, 
-            newSliderX, 
-            sliderY
-        ]       
+        sliderCounter.setAttrs({
+            text: value
+        })
+        orangeLine.setAttrs ({
+            points: [
+                layerLeftX, 
+                sliderY, 
+                newSliderX, 
+                sliderY
+            ]
+        })
+        greyLine.setAttrs ({
+            points: [
+                layerRightX, 
+                sliderY, 
+                newSliderX, 
+                sliderY
+            ]
+        })      
         layer.draw()
     }
 
@@ -148,11 +154,13 @@ function RangeInputController() {
         let value = Math.round(
             ((newSliderX - layerLeftX) / (layerRightX - layerLeftX)) * (self.input.max - self.input.min)
         )
-        sliderCounter.attrs.text = value
-        layer.draw()
+        $("#hiddenInput").focus().val(value)
+    }
+
+    function hiddenInputHandler() {
         self.onChange({
             input: self.input,
-            value: value
+            value: self.input.value
         })
     }
 

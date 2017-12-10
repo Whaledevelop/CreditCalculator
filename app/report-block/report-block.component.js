@@ -13,11 +13,9 @@ angular
 function ReportBlockController(moneyView, unitHandler) {
     let self = this
 
-    self.$onInit = function() {
-    }
-
-    self.$onChanges = function() {
-    }
+    setInterval(function() {
+        //console.log(self.report)
+    }, 2000)
 
     self.moneyView = function(value) {
         return moneyView.setView(value)
