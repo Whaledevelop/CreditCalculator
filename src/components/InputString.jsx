@@ -1,6 +1,7 @@
 import React from 'react';
 
 import unitHandler from '../modules/unitHandler'
+import RangeInput from './RangeInput'
 
 const InputString = ({ input, onChange }) => {
     return (
@@ -9,16 +10,12 @@ const InputString = ({ input, onChange }) => {
                 { input.label }
             </div>
             <div style = {{ width: "45%" }}>
-                <input 
-                    type = "range"
-                    min = { input.min }
-                    max = { input.max }
-                    step = { input.step }
-                    value = { input.value }
-                    onChange = {e => {          
-                        onChange (e.target.value)
+                <RangeInput
+                    input = { input }
+                    onChange = {value => {
+                        onChange (value)
                     }}
-                />
+                ></RangeInput>
             </div>
             <div>
                 <input 

@@ -11,7 +11,8 @@ const initialStore = {
             "max": 3000000, 
             "step": 10000,
             "value": 1500000,
-            "unit": "руб."
+            "unit": "руб.",
+            "container": "creditSum"
         },
         {
             "id": 2, 
@@ -20,7 +21,8 @@ const initialStore = {
             "max": 60, 
             "step": 1,
             "value": 12,
-            "unit": "мес."
+            "unit": "мес.",
+            "container": "creditPeriod"
         },
         {
             "id": 3, 
@@ -29,7 +31,8 @@ const initialStore = {
             "max": 30, 
             "step": 1,
             "value": 15,
-            "unit": "% годовых"
+            "unit": "% годовых",
+            "container": "percentageRate"
         }
     ],
     reports: [
