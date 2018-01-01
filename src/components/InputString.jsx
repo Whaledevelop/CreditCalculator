@@ -6,10 +6,10 @@ import RangeInput from './RangeInput'
 const InputString = ({ input, onChange }) => {
     return (
         <div className = "inputString">
-            <div style = {{ width: "25%"}}>
+            <div style = {{ width: "20%", lineHeight: "70px"}}>
                 { input.label }
             </div>
-            <div style = {{ width: "45%" }}>
+            <div style = {{ width: "55%" }}>
                 <RangeInput
                     input = { input }
                     onChange = {value => {

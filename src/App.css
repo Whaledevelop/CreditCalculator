@@ -22,7 +22,8 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .unitSpan {
-    padding-left: 8px
+    padding-left: 8px;
+    font-size: 14px
 }
 
 #inputBlock {
@@ -38,11 +39,12 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .textInput {
-    width: 100px;
-    height: 25px;
+    width: 70px;
+    height: 30px;
     color: #757375;
-    padding-left: 5px;
+    padding: 0px 5px;
     margin-left: 30px;
+    margin-top: 18px;
 }
 
 #reportBlock {

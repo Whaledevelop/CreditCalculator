@@ -7,13 +7,16 @@ class RangeInput extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            stage: {}
+            layer: {}
         }
     }
 
     componentDidMount() {
-        console.log ('ComponentDidMount')
         const { input, onChange } = this.props;
+
+        const numberPadding = (value) => {
+            return moneyView(value).length * 4
+        }
 
         const 
             containerElem = document.getElementById(`${input.container}`),
@@ -27,19 +30,17 @@ class RangeInput extends Component {
             }),
 
             stageWidth = stage.attrs.width,
-            stageHeight = stage.attrs.height,
-            layerLeftX = 10,
-            layerRightX = stageWidth - 10,
+            layerLeftX = 50,
+            layerRightX = stageWidth - 50,
             sliderX = (
-                Math.round((input.value / (
-                    (input.max - input.min)/(layerRightX - layerLeftX))) + layerLeftX)
-            ),
+                (layerRightX - layerLeftX) * (input.value - input.min) / (input.max - input.min)
+            ) + layerLeftX,
             sliderY = 35,
 
             layer = new Konva.Layer({
                 layerLeftX: layerLeftX,
                 layerRightX: layerRightX,
-                sliderY: sliderY
+                sliderY: sliderY,
             }),
 
             circleSlider = new Konva.Circle({
@@ -63,33 +64,34 @@ class RangeInput extends Component {
                     }
                 }
             }),
-
+            fontSize = 18,
+            fontFamily = 'Calibri',
             sliderCounter = new Konva.Text({
                 name: "sliderCounter",
-                x: sliderX - 20,
-                y: sliderY + 10,
+                x: sliderX - numberPadding(input.value),
+                y: sliderY + 15,
                 text: moneyView(input.value),
-                fontSize: 18,
-                fontFamily: 'Calibri',
-                fill: 'green'
+                fontSize: fontSize,
+                fontFamily: fontFamily,
+                fill: "#17B558"
             }),
 
             minText = new Konva.Text({
-                x: layerLeftX,
+                x: layerLeftX - numberPadding(input.min),
                 y: sliderY - 30,
                 text: moneyView(input.min),
-                fontSize: 18,
-                fontFamily: 'Calibri',
-                fill: 'green'
+                fontSize: fontSize,
+                fontFamily: fontFamily,
+                fill: "#757375"
             }),
 
             maxText = new Konva.Text({
-                x: layerRightX - 70,
+                x: layerRightX - numberPadding(input.max),
                 y: sliderY - 30,
                 text: moneyView(input.max),
-                fontSize: 18,
-                fontFamily: 'Calibri',
-                fill: 'green'
+                fontSize: fontSize,
+                fontFamily: fontFamily,
+                fill: "#757375"
             }),
 
             orangeLine = new Konva.Line({
@@ -101,7 +103,7 @@ class RangeInput extends Component {
                     sliderY
                 ],
                 stroke: '#ff7217',
-                strokeWidth: 5,
+                strokeWidth: 4,
                 lineCap: 'round',
                 lineJoin: 'round'
             }),
@@ -115,7 +117,7 @@ class RangeInput extends Component {
                     sliderY
                 ],
                 stroke: '#d2d0d2',
-                strokeWidth: 5,
+                strokeWidth: 4,
                 lineCap: 'round',
                 lineJoin: 'round'
             })
@@ -131,14 +133,20 @@ class RangeInput extends Component {
         layer.draw()
 
         this.setState({
-            stage: stage  
+            layer: layer 
         });
 
         function handleRangeValue() {
-            const value = Math.round((
-                    (stage.getPointerPosition().x - layerLeftX) / (layerRightX - layerLeftX)
-                ) * (input.max - input.min))
-                onChange(value)
+            let xPosition = stage.getPointerPosition().x;
+            if (xPosition <= layerLeftX) {
+                xPosition = layerLeftX
+            } else if (xPosition >= layerRightX) {
+                xPosition = layerRightX
+            }
+            const value = Math.round(
+                (xPosition - layerLeftX) / (layerRightX - layerLeftX) * (input.max - input.min)
+            ) + input.min
+            onChange(value)
         }
 
         circleSlider.on('dragmove', function(){
@@ -154,59 +162,56 @@ class RangeInput extends Component {
         })  
     }
 
-    componentWillReceiveProps(nextProps) {
-        console.log (nextProps)
-        console.log (this.state.stage.getPointerPosition())
-        if (this.state.stage.getPointerPosition() !== undefined) {
-            const 
-                { value } = nextProps.input,
-                { stage } = this.state,
-                layer = stage.children.filter(child => {
-                    return child.nodeType === 'Layer'
-                })[0],
-                circleSlider = layer.children.filter(child => {
-                    return child.attrs.name === "circleSlider"
-                })[0],
-                sliderCounter = layer.children.filter(child => {
-                    return child.attrs.name === "sliderCounter"
-                })[0],
-                greyLine = layer.children.filter(child => {
-                    return child.attrs.name === "greyLine"
-                })[0],
-                orangeLine = layer.children.filter(child => {
-                    return child.attrs.name === "orangeLine"
-                })[0],
-                newSliderX = stage.getPointerPosition().x
+    componentWillReceiveProps(nextProps) { 
+        const 
+            { value, max, min } = nextProps.input,
+            { layer } = this.state,
+            circleSlider = layer.children.filter(child => {
+                return child.attrs.name === "circleSlider"
+            })[0],
+            sliderCounter = layer.children.filter(child => {
+                return child.attrs.name === "sliderCounter"
+            })[0],
+            greyLine = layer.children.filter(child => {
+                return child.attrs.name === "greyLine"
+            })[0],
+            orangeLine = layer.children.filter(child => {
+                return child.attrs.name === "orangeLine"
+            })[0],
+            { layerLeftX, layerRightX, sliderY } = layer.attrs,
             
-            if (newSliderX >= layer.attrs.layerLeftX 
-                & newSliderX <= layer.attrs.layerRightX) {
-                circleSlider.move({
-                    x: newSliderX - circleSlider.attrs.x 
-                })
-                sliderCounter.move({
-                    x: newSliderX - sliderCounter.attrs.x 
-                })
-                sliderCounter.setAttrs({
-                    text: moneyView(value)
-                })
-                orangeLine.setAttrs ({
-                    points: [
-                        layer.attrs.layerLeftX, 
-                        layer.attrs.sliderY, 
-                        newSliderX, 
-                        layer.attrs.sliderY
-                    ]
-                })
-                greyLine.setAttrs ({
-                    points: [
-                        layer.attrs.layerRightX, 
-                        layer.attrs.sliderY, 
-                        newSliderX, 
-                        layer.attrs.sliderY
-                    ]
-                }) 
-                layer.draw()
-            }
+            newSliderX = (
+                (layerRightX - layerLeftX) * (value - min) / (max - min)
+            ) + layerLeftX;
+            
+        if (newSliderX >= layerLeftX && newSliderX <= layerRightX) {
+            
+            circleSlider.move({
+                x: newSliderX - circleSlider.attrs.x 
+            })
+            sliderCounter.move({
+                x: newSliderX - sliderCounter.attrs.x - moneyView(value).length * 4
+            })
+            sliderCounter.setAttrs({
+                text: moneyView(value)
+            })
+            orangeLine.setAttrs ({
+                points: [
+                    layerLeftX, 
+                    sliderY, 
+                    newSliderX, 
+                    sliderY
+                ]
+            })
+            greyLine.setAttrs ({
+                points: [
+                    layerRightX, 
+                    sliderY, 
+                    newSliderX, 
+                    sliderY
+                ]
+            }) 
+            layer.draw()
         }
     }
 
