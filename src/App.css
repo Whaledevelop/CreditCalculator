@@ -33,11 +33,6 @@ h1,h2,h3,h4,h5,h6 {
     padding: 20px;
 }
 
-.inputString {
-    display: flex;
-    height: 70px
-}
-
 .textInput {
     width: 70px;
     height: 30px;

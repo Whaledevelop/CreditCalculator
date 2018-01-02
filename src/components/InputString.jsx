@@ -4,14 +4,20 @@ import unitHandler from '../modules/unitHandler'
 import RangeInput from './RangeInput'
 
 const InputString = ({ input, onChange }) => {
+    const 
+        rangeInputWidth = 400,
+        inputStringHeight = 70;
+
     return (
-        <div className = "inputString">
-            <div style = {{ width: "20%", lineHeight: "70px"}}>
+        <div style = {{ display: "flex", height: `${inputStringHeight}px`}}>
+            <div style = {{ width: "22%", lineHeight: "70px" }}>
                 { input.label }
             </div>
-            <div style = {{ width: "55%" }}>
+            <div style = {{ width: `${rangeInputWidth}px`}}>
                 <RangeInput
                     input = { input }
+                    width = { rangeInputWidth }
+                    height = { inputStringHeight }
                     onChange = {value => {
                         onChange (value)
                     }}
