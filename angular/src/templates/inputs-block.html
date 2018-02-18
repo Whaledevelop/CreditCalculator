@@ -1,0 +1,33 @@
+<div>
+    <h2 id='creditCalcHeader'>Кредитный калькулятор </h2>
+    <div ng-repeat="input in inputs">
+        <div class='inputsGroup'>
+            <div class='labelColumn'>
+                <span>{{ input.label }}: </span>
+            </div>   
+            <div class='rangeColumn'>
+                <range-input></range-input>
+            <!--  
+                <input 
+                    type='range' 
+                    min='{{ input.min }}'
+                    max='{{ input.max }}'
+                    step='{{ input.step }}'
+                    ng-model='input.value'
+                    ng-change='handleInputs(input.id, input.value)'
+                />
+            -->
+            </div>
+            <div>
+                <input 
+                    class='valueInput'
+                    type='text'
+                    ng-model='input.value'
+                    ng-change='handleInputs(input.id, input.value)'
+                />
+                <span>{{ input.unit }}</span>
+            </div>
+            <div>{{input.errorMessage}}</div>
+        </div>   
+    </div>        
+</div>   

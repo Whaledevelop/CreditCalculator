@@ -1,0 +1,21 @@
+
+<div class = "reportString">
+    <div class = "reportColumn">
+        <span class ="reportLabel">
+            {{ $ctrl.report.label }} :
+        </span>
+    </div>
+    <div class = "reportColumn reportValuesColumn">
+        <strong class="reportNumber">
+            {{$ctrl.moneyView(
+                $ctrl.report.value
+            )}} 
+        </strong>
+        <span class="reportUnit">
+            {{ $ctrl.unitHandler(
+                $ctrl.report.value,
+                $ctrl.report.unit
+            )}}
+        </span>       
+    </div>
+</div>

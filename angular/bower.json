@@ -1,0 +1,12 @@
+{
+  "name": "credit_calculator",
+  "description": "Test rask for aspect-systems",
+  "dependencies": {
+    "angular": "1.5.x",
+    "angular-mocks": "1.5.x",
+    "angular-route": "1.5.x",
+    "angular-resource": "1.5.x",
+    "bootstrap": "3.3.x",
+    "jquery": "^3.2.1"
+  }
+}
