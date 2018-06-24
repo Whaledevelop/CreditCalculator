@@ -1,2 +1,0 @@
-In the beginning this app was developed on angular 1.5 in order to try it, but then i ran into some difficulties. You can find buggy angular version in the folder "angular". There was a trouble with communication between model and view or between component and template. 
-So i decided to rewrite this app using react. I have used react-konva to draw range input how i needed. Now it is working but still have some bugs. First of all there some lags when moving slider. Secondly, text inputs have no lows and highs, at this moment i don't know how to solve it.
