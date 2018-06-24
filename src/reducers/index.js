@@ -1,9 +1,6 @@
 import { combineReducers } from 'redux'
-
-import { inputs } from './inputs'
-import { reports } from './reports'
+import { creditProps } from './creditProps'
 
 export default combineReducers({
-    inputs,
-    reports
+    creditProps
 })

@@ -1,6 +1,6 @@
 const changeValue = (id, value) => {
     return {
-        type: 'CHANGE_VALUE',
+        type: 'CHANGE_CREDIT_PROP_VALUE',
         payload: {
             id: id,
             value: value

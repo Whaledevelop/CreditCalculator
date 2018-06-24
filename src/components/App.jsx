@@ -1,13 +1,13 @@
 import React from 'react';
 
-import InputsBlockContainer from '../containers/InputsBlockContainer'
-import ReportBlockContainer from '../containers/ReportBlockContainer'
+import InputsContainer from '../containers/InputsContainer'
+import ReportsContainer from '../containers/ReportsContainer'
 
-const App = () => {
+const App = () => {    
     return (
         <div id = "calcBody"> 
-            <InputsBlockContainer/>
-            <ReportBlockContainer/>
+            <InputsContainer />
+            <ReportsContainer/>
         </div>
     )
 }
