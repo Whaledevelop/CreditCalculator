@@ -1,7 +1,12 @@
-const inputsToReports = (creditProps) => {
-    const creditSum = creditProps.sum.value;
-    const period = creditProps.period.value;
-    const percent = creditProps.percent.value;
+const inputsToReports = (inputs) => {
+    const correctReport = ({value, min, max}) => {
+        return value < min ? min 
+            : value > max ? max 
+            : value 
+    }
+    const creditSum = correctReport(inputs[0])
+    const period = correctReport(inputs[1])
+    const percent = correctReport(inputs[2])
 
     const monthlyRate = percent / 12 / 100;
     const regularPayment = (creditSum * monthlyRate) / 

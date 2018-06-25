@@ -13,21 +13,18 @@ export class RangeInput extends Component {
     }
 
     handleRangeValue() {
-        const {stage} = this.refs,
-            { layerLeftX, layerRightX } = this,
-            { input, onChange } = this.props;
-
-        let pointerX = stage.getStage().getPointerPosition().x;
-        if (pointerX <= layerLeftX) {
-            pointerX = layerLeftX
-        } else if (pointerX >= layerRightX) {
-            pointerX = layerRightX
-        }
+        const {input, onChange } = this.props;
+        let pointerX = this.refs.stage.getStage().getPointerPosition().x;
+        if (pointerX <= this.layerLeftX) {
+            pointerX = this.layerLeftX
+        } else if (pointerX >= this.layerRightX) {
+            pointerX = this.layerRightX
+        };
         const value = Math.round(
-            (pointerX - layerLeftX) / (layerRightX - layerLeftX) 
+            (pointerX - this.layerLeftX) / (this.layerRightX - this.layerLeftX) 
             * (input.max - input.min)
-        ) + input.min
-        onChange(value)
+        ) + input.min;
+        onChange(value);
     }
 
     componentDidMount() {
@@ -44,16 +41,20 @@ export class RangeInput extends Component {
     }
 
     render() { 
-        const 
-            { width, height, input } = this.props,
+        const { width, height, input } = this.props,
             { layerLeftX, layerRightX, sliderY } = this,
-            sliderX = (
-                (layerRightX - layerLeftX) * (input.value - input.min) 
-                / (input.max - input.min)
-            ) + layerLeftX,
             fontSize = 18,
-            fontFamily = 'Calibri'
+            fontFamily = 'Calibri',
+            {min, max} = input;
 
+        const value = (input.value <= min) ? min 
+                : ((input.value >= max) ? max 
+                : input.value),
+            sliderX = (
+                (layerRightX - layerLeftX) * (value - min) 
+                / (max - min)
+            ) + layerLeftX;
+            
         return (
             <Stage
                 ref = "stage"
@@ -110,27 +111,27 @@ export class RangeInput extends Component {
                     ></Circle>
                     <Text
                         ref = "sliderCounter"
-                        x = {sliderX - input.value.toLocaleString().length * 4}
+                        x = {sliderX - value.toLocaleString().length * 4}
                         y = {sliderY + 15}
-                        text = {input.value.toLocaleString()}
+                        text = {value.toLocaleString()}
                         fontSize = {fontSize}
                         fontFamily = {fontFamily}
                         fill = "#17B558"
                     ></Text>
                     <Text
                         ref = "minText"
-                        x = {layerLeftX - input.min.toLocaleString().length * 4}
+                        x = {layerLeftX - min.toLocaleString().length * 4}
                         y = {sliderY - 30}
-                        text = {input.min.toLocaleString()}
+                        text = {min.toLocaleString()}
                         fontSize = {fontSize}
                         fontFamily = {fontFamily}
                         fill = "#757375"
                     ></Text>
                     <Text
                         ref = "maxText"
-                        x = {layerRightX - input.max.toLocaleString().length * 4}
+                        x = {layerRightX - max.toLocaleString().length * 4}
                         y = {sliderY - 30}
-                        text = {input.max.toLocaleString()}
+                        text = {max.toLocaleString()}
                         fontSize = {fontSize}
                         fontFamily = {fontFamily}
                         fill = "#757375"

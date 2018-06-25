@@ -3,12 +3,12 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 
 import { store } from './configureStore'
-import './App.css'
-import App from './components/App'
+import './css/app.css'
+import CalculatorContainer from './containers/CalculatorContainer';
 
 render(
     <Provider store = {store}>
-        <App />
+        <CalculatorContainer />
     </Provider>, 
     document.getElementById('root')
 );

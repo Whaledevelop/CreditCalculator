@@ -1,0 +1,42 @@
+#inputBlock {
+  width: 70%;
+  margin: 0px;
+  color: #757375;
+  padding: 20px;
+}
+
+.inputRow {
+  display: flex;
+}
+
+.inputLabel {
+  width: 22%;
+  padding-top: 40px;
+}
+
+.textInputBlock {
+  margin-left: 15px;
+}
+
+.errorMessage {
+  height: 35px;
+  width: 180px;
+  font-size: 14px;
+  color: #E31638;
+}
+
+
+.textInput {
+  width: 70px;
+  height: 25px;
+  
+}
+
+.textInputUnit {
+  padding-left: 8px;
+  font-size: 14px;
+}
+
+
+
+

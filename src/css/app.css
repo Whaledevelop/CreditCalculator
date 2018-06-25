@@ -26,20 +26,9 @@ h1,h2,h3,h4,h5,h6 {
     font-size: 14px
 }
 
-#inputBlock {
-    width: 70%;
-    margin: 0px;
-    color: #757375;
-    padding: 20px;
-}
 
-.textInput {
-    width: 70px;
-    height: 30px;
-    padding: 0px 5px;
-    margin-left: 30px;
-    margin-top: 18px;
-}
+
+
 
 #reportBlock {
     background-color: #17b558;
