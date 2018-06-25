@@ -6,7 +6,7 @@ const ReportRow = ({ report }) => {
     return (
         <div 
             key = {report.id}
-            className = "reportString"
+            className = "reportRow"
         >
             <div style = {{ width: "50%" }}>{report.label}</div>
             <div style = {{ paddingLeft: "25px"}}>

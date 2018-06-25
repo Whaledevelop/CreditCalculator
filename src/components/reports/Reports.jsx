@@ -1,5 +1,6 @@
 import React from 'react';
 
+import '../../css/reports.css'
 import ReportRow from './ReportRow';
 
 const Reports = ({ reports }) => (

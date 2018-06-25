@@ -16,7 +16,6 @@ const mapStateToProps = state =>  state
 const mapDispatchToProps = dispatch => {
     return {
         onHandleValue: (id, value) => {
-            console.log (id, value)
             dispatch(changeValue(id, value))
         }
     }

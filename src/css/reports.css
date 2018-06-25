@@ -1,0 +1,13 @@
+#reportBlock {
+  background-color: #17b558;
+  width: 30%;
+  color: #fdfffe;
+  padding: 20px 30px
+}
+
+.reportRow {
+  display: flex;
+  height: 30px;
+  line-height: 30px;
+  margin-bottom: 10px
+}
