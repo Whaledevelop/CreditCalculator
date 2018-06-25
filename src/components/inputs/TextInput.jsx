@@ -1,40 +1,25 @@
 import React, { Component } from 'react';
-import unitHandler from '../../modules/unitHandler'
+
+import unitHandler from '../../modules/unitHandler';
 
 class TextInput extends Component {
   constructor(props) {
-    super(props);
-    this.state = {
-      value: this.props.input.value
-    }
+    super(props)
     this.handleInput = this.handleInput.bind(this)
   }
 
   handleInput(e) {
-    const {input, onCorrectChange, onWarning} = this.props
+    const {input, onChange} = this.props;
     let {value} = e.target;
-    if (value >= input.max || value <= input.min) {
-      onWarning(input.id, value)
-    } else {
-      onCorrectChange(input.id, value)
-    }    
-    this.setState({ value: value});
+    if (value >= input.max) {
+        value = input.max
+    } 
+    onChange (value)
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.input.value !== this.state.value) {
-      this.setState({ 
-        value : nextProps.input.value
-      })
-    }
-  }
-  
   render() { 
-    const {value} = this.state;
-    const {max, min, unit} = this.props.input
-    const inputColor = (value >= max || value <= min) 
-      ? "red" : "#757375"
-
+    const {value, unit, max, min} = this.props.input;
+    const inputColor = (value < min || value > max) ? "red" : "#757375"
     return (  
       <div>
         <input 
@@ -42,7 +27,7 @@ class TextInput extends Component {
             className = "textInput"
             style = {{color : inputColor}}
             value = { value }
-            onChange = { this.handleInput}
+            onChange = {this.handleInput}
         />
         <span className = "unitSpan">
             { unitHandler(value, unit) }

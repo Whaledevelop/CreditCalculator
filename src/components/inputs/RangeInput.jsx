@@ -27,7 +27,7 @@ export class RangeInput extends Component {
             (pointerX - layerLeftX) / (layerRightX - layerLeftX) 
             * (input.max - input.min)
         ) + input.min
-        onChange(input.id, value)
+        onChange(value)
     }
 
     componentDidMount() {
@@ -47,16 +47,12 @@ export class RangeInput extends Component {
         const 
             { width, height, input } = this.props,
             { layerLeftX, layerRightX, sliderY } = this,
+            sliderX = (
+                (layerRightX - layerLeftX) * (input.value - input.min) 
+                / (input.max - input.min)
+            ) + layerLeftX,
             fontSize = 18,
-            fontFamily = 'Calibri';
-        
-        let {value, max, min} = input;
-        if (value <= min) value = min
-        else if (value >= max) value = max;
-
-        const sliderX = (layerRightX - layerLeftX) * (value - min) 
-            / (max - min) + layerLeftX;
-            
+            fontFamily = 'Calibri'
 
         return (
             <Stage
@@ -114,27 +110,27 @@ export class RangeInput extends Component {
                     ></Circle>
                     <Text
                         ref = "sliderCounter"
-                        x = {sliderX - value.toLocaleString().length * 4}
+                        x = {sliderX - input.value.toLocaleString().length * 4}
                         y = {sliderY + 15}
-                        text = {value.toLocaleString()}
+                        text = {input.value.toLocaleString()}
                         fontSize = {fontSize}
                         fontFamily = {fontFamily}
                         fill = "#17B558"
                     ></Text>
                     <Text
                         ref = "minText"
-                        x = {layerLeftX - min.toLocaleString().length * 4}
+                        x = {layerLeftX - input.min.toLocaleString().length * 4}
                         y = {sliderY - 30}
-                        text = {min.toLocaleString()}
+                        text = {input.min.toLocaleString()}
                         fontSize = {fontSize}
                         fontFamily = {fontFamily}
                         fill = "#757375"
                     ></Text>
                     <Text
                         ref = "maxText"
-                        x = {layerRightX - max.toLocaleString().length * 4}
+                        x = {layerRightX - input.max.toLocaleString().length * 4}
                         y = {sliderY - 30}
-                        text = {max.toLocaleString()}
+                        text = {input.max.toLocaleString()}
                         fontSize = {fontSize}
                         fontFamily = {fontFamily}
                         fill = "#757375"

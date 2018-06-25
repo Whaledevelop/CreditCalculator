@@ -21,8 +21,7 @@ const InputRow = ({ input, onChange, onWarning }) => {
             ></RangeInput>
             <TextInput
                 input = {input}
-                onCorrectChange = {onChange}
-                onWarning = {onWarning}
+                onChange = {onChange}
             />
         </div> 
     )
