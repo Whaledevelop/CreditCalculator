@@ -25,20 +25,3 @@ h1,h2,h3,h4,h5,h6 {
     padding-left: 8px;
     font-size: 14px
 }
-
-
-
-
-
-#reportBlock {
-    background-color: #17b558;
-    width: 30%;
-    color: #fdfffe;
-    padding: 20px 30px
-}
-
-.reportString {
-    display: flex;
-    line-height: 20px;
-    margin-bottom: 10px
-}
