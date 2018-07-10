@@ -1,7 +1,7 @@
 import React from 'react';
 
 import RangeInput from './RangeInput'
-import TextInput from './TextInput'
+import NumberInput from './numberInput/NumberInput'
 
 const InputRow = ({ input, onChange }) => {
     const rangeInputWidth = 400,
@@ -20,7 +20,7 @@ const InputRow = ({ input, onChange }) => {
                 input = { input }
                 onChange = {onChange}
             />
-            <TextInput
+            <NumberInput
                 input = {input}
                 onChange = {onChange}
             />
