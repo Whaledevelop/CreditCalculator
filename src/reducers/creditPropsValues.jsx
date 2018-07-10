@@ -1,4 +1,4 @@
-export const creditProps = (state = [], action) => {
+export const creditPropsValues = (state = [], action) => {
     const {type, payload} = action;
     switch (type) {
         case 'CHANGE_CREDIT_PROP_VALUE': {

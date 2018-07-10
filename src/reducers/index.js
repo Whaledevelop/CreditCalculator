@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import { creditProps } from './creditProps'
+import { creditPropsValues } from './creditPropsValues'
 
 export default combineReducers({
-    creditProps
+    creditPropsValues
 })

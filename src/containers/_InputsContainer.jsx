@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import changeValue from '../actions/creditProps'
+import changeValue from '../actions/creditPropsValues'
 import Inputs from '../components/inputs/Inputs';
 
 const InputsContainer = ({inputs, onHandleValue}) => (
