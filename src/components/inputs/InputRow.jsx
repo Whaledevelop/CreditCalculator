@@ -1,31 +1,29 @@
 import React from 'react';
 
-import RangeInput from './RangeInput'
-import NumberInput from './numberInput/NumberInput'
+import RangeInputBlock from './rangeInput/RangeInputBlock';
 
-const InputRow = ({ input, onChange }) => {
-    const rangeInputWidth = 400,
-        inputStringHeight = 100;
-    return (
-        <div 
-            className = "inputRow"
-            style = {{ height: `${inputStringHeight}px`}}
-        >
-            <div className = "inputLabel">
-                { input.label }
-            </div>
-            <RangeInput
-                width = { rangeInputWidth }
-                height = { inputStringHeight }
-                input = { input }
-                onChange = {onChange}
-            />
-            <NumberInput
-                input = {input}
-                onChange = {onChange}
-            />
-        </div> 
-    )
+const InputRow = ({creditProp, onChangeValue}) => {
+  const INPUT_STRING_HEIGHT = 100;
+  return (  
+    <div 
+      className = "inputRow"
+      style = {{ height: `${INPUT_STRING_HEIGHT}px`}}
+    >
+      <div className = "inputLabel">
+        { creditProp.label }
+      </div>
+      <RangeInputBlock
+          width = {400}
+          height = { INPUT_STRING_HEIGHT }
+          creditProp = { creditProp }
+          onChange = { onChangeValue } 
+      />
+      {/* <NumberInput
+          input = {input}
+          onChange = {onChange}
+      /> */}
+    </div> 
+  );
 }
  
 export default InputRow;

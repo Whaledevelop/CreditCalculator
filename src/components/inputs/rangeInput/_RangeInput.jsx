@@ -5,9 +5,11 @@ export class RangeInput extends Component {
     constructor(props) {
         super(props);
 
-        this.layerLeftX = 50;
-        this.layerRightX = this.props.width - 50;
-        this.sliderY = this.props.height / 2;
+        this.LAYER_LEFT_X = 50;
+        this.LAYER_RIGHT_X = this.props.width - 50;
+        this.SLIDER_Y = this.props.height / 2;
+        this.FONT_SIZE = 18,
+        this.FONT_FAMILY = 'Calibri';
 
         this.handleRangeValue = this.handleRangeValue.bind(this)
     }
@@ -15,16 +17,16 @@ export class RangeInput extends Component {
     handleRangeValue() {
         const {input, onChange } = this.props;
         let pointerX = this.refs.stage.getStage().getPointerPosition().x;
-        if (pointerX <= this.layerLeftX) {
-            pointerX = this.layerLeftX
-        } else if (pointerX >= this.layerRightX) {
-            pointerX = this.layerRightX
+        if (pointerX <= this.LAYER_LEFT_X) {
+            pointerX = this.LAYER_LEFT_X
+        } else if (pointerX >= this.LAYER_RIGHT_X) {
+            pointerX = this.LAYER_RIGHT_X
         };
         const value = Math.round(
-            (pointerX - this.layerLeftX) / (this.layerRightX - this.layerLeftX) 
+            (pointerX - this.LAYER_LEFT_X) / (this.LAYER_RIGHT_X - this.LAYER_LEFT_X) 
             * (input.max - input.min)
         ) + input.min;
-        onChange(value);
+        onChange(input.id, value);
     }
 
     componentDidMount() {
@@ -41,19 +43,12 @@ export class RangeInput extends Component {
     }
 
     render() { 
-        const { width, height, input } = this.props,
-            { layerLeftX, layerRightX, sliderY } = this,
-            fontSize = 18,
-            fontFamily = 'Calibri',
-            {min, max} = input;
+        const { width, height, input } = this.props;        
 
-        const value = (input.value <= min) ? min 
-                : ((input.value >= max) ? max 
-                : input.value),
-            sliderX = (
-                (layerRightX - layerLeftX) * (value - min) 
-                / (max - min)
-            ) + layerLeftX;
+        const sliderX = (
+                (this.LAYER_RIGHT_X - this.LAYER_LEFT_X) * 
+                (input.value - input.min) / (input.max - input.min)
+            ) + this.LAYER_LEFT_X;
             
         return (
             <Stage
@@ -65,10 +60,10 @@ export class RangeInput extends Component {
                     <Line
                         ref = "orangeLine"
                         points = {[
-                            layerLeftX,
-                            sliderY,
+                            this.LAYER_LEFT_X,
+                            this.SLIDER_Y,
                             sliderX,
-                            sliderY,
+                            this.SLIDER_Y,
                         ]}
                         stroke = '#ff7217'
                         strokeWidth = {4}
@@ -78,10 +73,10 @@ export class RangeInput extends Component {
                     <Line
                         ref = "greyLine"
                         points = {[
-                            layerRightX,
-                            sliderY,
+                            this.LAYER_RIGHT_X,
+                            this.SLIDER_Y,
                             sliderX,
-                            sliderY,
+                            this.SLIDER_Y,
                         ]}
                         stroke = '#d2d0d2'
                         strokeWidth = {4}
@@ -91,49 +86,49 @@ export class RangeInput extends Component {
                     <Circle
                         ref = "circleSlider"
                         x = { sliderX }
-                        y = { sliderY }
+                        y = { this.SLIDER_Y }
                         radius = {8}
                         fill = '#fff'
                         stroke = '#ff7217'
                         strokeWidth = {2}
                         draggable = {true}
                         dragBoundFunc = {pos => {
-                            if (pos.x <= layerLeftX) {
-                                pos.x = layerLeftX
-                            } else if (pos.x >= layerRightX) {
-                                pos.x = layerRightX
+                            if (pos.x <= this.LAYER_LEFT_X) {
+                                pos.x = this.LAYER_LEFT_X
+                            } else if (pos.x >= this.LAYER_RIGHT_X) {
+                                pos.x = this.LAYER_RIGHT_X
                             }
                             return {
                                 x: pos.x,
-                                y: sliderY
+                                y: SLIDER_Y
                             }
                         }}
                     ></Circle>
                     <Text
                         ref = "sliderCounter"
                         x = {sliderX - value.toLocaleString().length * 4}
-                        y = {sliderY + 15}
+                        y = {this.SLIDER_Y + 15}
                         text = {value.toLocaleString()}
-                        fontSize = {fontSize}
-                        fontFamily = {fontFamily}
+                        FONT_SIZE = {FONT_SIZE}
+                        FONT_FAMILY = {FONT_FAMILY}
                         fill = "#17B558"
                     ></Text>
                     <Text
                         ref = "minText"
-                        x = {layerLeftX - min.toLocaleString().length * 4}
-                        y = {sliderY - 30}
+                        x = {this.LAYER_LEFT_X - min.toLocaleString().length * 4}
+                        y = {this.SLIDER_Y - 30}
                         text = {min.toLocaleString()}
-                        fontSize = {fontSize}
-                        fontFamily = {fontFamily}
+                        FONT_SIZE = {this.FONT_SIZE}
+                        FONT_FAMILY = {this.FONT_FAMILY}
                         fill = "#757375"
                     ></Text>
                     <Text
                         ref = "maxText"
-                        x = {layerRightX - max.toLocaleString().length * 4}
-                        y = {sliderY - 30}
+                        x = {this.LAYER_RIGHT_X - max.toLocaleString().length * 4}
+                        y = {this.SLIDER_Y - 30}
                         text = {max.toLocaleString()}
-                        fontSize = {fontSize}
-                        fontFamily = {fontFamily}
+                        FONT_SIZE = {this.FONT_SIZE}
+                        FONT_FAMILY = {this.FONT_FAMILY}
                         fill = "#757375"
                     ></Text>
                 </Layer>
