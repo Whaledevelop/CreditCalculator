@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import changeValue from '../actions/creditPropsValues'
-import Inputs from '../components/inputs/Inputs';
+import Inputs from '../components/inputs/_Inputs';
 
 const InputsContainer = ({inputs, onHandleValue}) => (
   <Inputs 

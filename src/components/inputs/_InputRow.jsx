@@ -1,6 +1,6 @@
 import React from 'react';
 
-import RangeInput from './RangeInput'
+import RangeInput from './rangeInput/_RangeInput'
 import NumberInput from './numberInput/NumberInput'
 
 const InputRow = ({ input, onChange }) => {

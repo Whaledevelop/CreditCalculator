@@ -1,6 +1,6 @@
 import React from 'react';
 
-import RangeInputBlock from './rangeInput/RangeInputBlock';
+import RangeInput from './RangeInput';
 
 const InputRow = ({creditProp, onChangeValue}) => {
   const INPUT_STRING_HEIGHT = 100;
@@ -12,11 +12,11 @@ const InputRow = ({creditProp, onChangeValue}) => {
       <div className = "inputLabel">
         { creditProp.label }
       </div>
-      <RangeInputBlock
+      <RangeInput
           width = {400}
           height = { INPUT_STRING_HEIGHT }
           creditProp = { creditProp }
-          onChange = { onChangeValue } 
+          onChange = { onChangeValue} 
       />
       {/* <NumberInput
           input = {input}

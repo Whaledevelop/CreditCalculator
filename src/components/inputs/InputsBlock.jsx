@@ -24,10 +24,10 @@ const InputsBlock = () => {
     <div id = "inputBlock">
       <h3 className = "blockHeader">Кредитный калькулятор</h3>
       {inputsProps.map(inputProps =>  (
-          <InputRowContainer
-              key = {inputProps.id} 
-              inputProps = {inputProps}
-          />
+        <InputRowContainer
+          key = {inputProps.id} 
+          inputProps = {inputProps}
+        />
       ))}
     </div>
   );
