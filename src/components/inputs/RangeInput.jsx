@@ -24,8 +24,7 @@ class RangeInput extends Component {
     };
     const value = Math.round(
       (pointerX - this.LAYER_LEFT_X) * (max - min) / 
-      (this.LAYER_RIGHT_X - this.LAYER_LEFT_X)  + min
-    );
+      (this.LAYER_RIGHT_X - this.LAYER_LEFT_X)  + min);
     this.props.onChange(id, value);
   }
 
@@ -42,8 +41,7 @@ class RangeInput extends Component {
     const { value, min, max } = this.props.creditProp;        
     const sliderX = (
       (this.LAYER_RIGHT_X - this.LAYER_LEFT_X) * 
-      (value - min) / (max - min)
-    ) + this.LAYER_LEFT_X;        
+      (value - min) / (max - min)) + this.LAYER_LEFT_X;        
     return (
       <Stage
         ref = "stage"

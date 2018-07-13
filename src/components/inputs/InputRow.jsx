@@ -1,6 +1,7 @@
 import React from 'react';
 
 import RangeInput from './RangeInput';
+import NumberInputBlockContainer from '../../containers/NumberInputBlockContainer';
 
 const InputRow = ({creditProp, onChangeValue}) => {
   const INPUT_STRING_HEIGHT = 100;
@@ -18,10 +19,10 @@ const InputRow = ({creditProp, onChangeValue}) => {
           creditProp = { creditProp }
           onChange = { onChangeValue} 
       />
-      {/* <NumberInput
-          input = {input}
-          onChange = {onChange}
-      /> */}
+      <NumberInputBlockContainer
+        creditProp = {creditProp}
+        onChange = {onChangeValue}
+      />
     </div> 
   );
 }

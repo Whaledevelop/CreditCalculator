@@ -1,36 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import unitHandler from '../../../modules/unitHandler';
-import ErrorMessage from './ErrorMessage';
-
-class NumberInput extends Component {
-  handleInputValue(e) {
-    if (!isNaN(e.target.value)) {
-      this.props.onChange(e.target.value);
-    }   
-  }
-
-  render() { 
-    const {value, unit, max, min, step} = this.props.input;
-    const inputColor = (value < min || value > max || isNaN(value)) 
-      ? "#E31638" : "#757375"
-    return (  
-      <div className = "textInputBlock">
-        <ErrorMessage input = {this.props.input}/>
-        <input 
-          type = "number"
-          step = {step}
-          className = "textInput"
-          style = {{color : inputColor}}
-          value = { value }
-          onChange = {this.handleInputValue.bind(this)}
-        />
-        <span className = "textInputUnit">
-            { unitHandler(value, unit) }
-        </span>
-    </div> 
-    )
-  }
+const NumberInput = ({value, valueStatus, creditProp, onChange}) => {
+  const inputColor = valueStatus === "correct" ? "#757375" : "#E31638"
+  return (  
+    <input 
+      type = "number"
+      value = {value}
+      step = {creditProp.step}
+      max = {creditProp.max}
+      min = {creditProp.min}
+      className = "numberInput"
+      style = {{color : inputColor}}  
+      onChange = {onChange}
+    />
+  );
 }
  
 export default NumberInput;

@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 import '../css/app.css'
 
 import InputsBlock from './inputs/InputsBlock';
