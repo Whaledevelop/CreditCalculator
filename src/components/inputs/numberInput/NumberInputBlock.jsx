@@ -2,7 +2,7 @@ import React from 'react';
 
 import ErrorMessage from './ErrorMessage';
 import NumberInput from './NumberInput';
-import UnitHandler from './UnitHandler'
+import UnitHandler from '../../app/UnitHandler'
 
 const NumberInputBlock = ({ value, valueStatus, creditProp, onChange}) => {
   return (  

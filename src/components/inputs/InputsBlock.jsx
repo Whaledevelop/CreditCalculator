@@ -4,8 +4,6 @@ import '../../css/inputs.css'
 
 import InputRowContainer from '../../containers/InputRowContainer';
 
-import "../../css/inputs.css"
-
 const inputsProps = [
   {
     "id": 1, "label": "Сумма кредита", "unit": "руб.",
