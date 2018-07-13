@@ -14,18 +14,25 @@ class RangeInput extends Component {
     this.handleRangeValue = this.handleRangeValue.bind(this)
   }
 
+  calcalulateValueFromPointerX(pointerX) {
+    const {max, min, step} = this.props.creditProp
+    const valueWithSmallNumbers = Math.round(
+      (pointerX - this.LAYER_LEFT_X) * (max - min) / 
+      (this.LAYER_RIGHT_X - this.LAYER_LEFT_X)  + min
+    );
+    const correctValue = Math.round(valueWithSmallNumbers / step) * step
+    return correctValue
+  }
+
   handleRangeValue() {
-    const {id, max, min} = this.props.creditProp;
     let pointerX = this.refs.stage.getStage().getPointerPosition().x;
     if (pointerX <= this.LAYER_LEFT_X) {
       pointerX = this.LAYER_LEFT_X
     } else if (pointerX >= this.LAYER_RIGHT_X) {
       pointerX = this.LAYER_RIGHT_X
     };
-    const value = Math.round(
-      (pointerX - this.LAYER_LEFT_X) * (max - min) / 
-      (this.LAYER_RIGHT_X - this.LAYER_LEFT_X)  + min);
-    this.props.onChange(id, value);
+    const value = this.calcalulateValueFromPointerX(pointerX)
+    this.props.onChange(this.props.creditProp.id, value);
   }
 
   componentDidMount() {

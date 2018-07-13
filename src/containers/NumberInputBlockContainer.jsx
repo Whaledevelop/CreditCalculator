@@ -21,10 +21,10 @@ class NumberInputBlockContainer extends Component {
     const {id, max, min} = this.props.creditProp;
     const {value} = e.target
     this.setState({ 
-      inputValue: value
+      inputValue: +value
     });
     if (value >= min && value <= max && !isNaN(value)) {
-      this.props.onChange(id, value)
+      this.props.onChange(id, +value)
     }
   }
 
